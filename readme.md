@@ -1,19 +1,28 @@
-To run the program you should use the following command ./readAll with the Table name that you want to use
-For example:
+# Probability distribution tables (C)
 
-./readAll Normal.csv
+A console program that looks up values in statistical tables stored as CSV files. I wrote it as a project in the Data Science master's programme at UFAZ in September 2020. The task is described in `ProjectDescription.pdf`; the source tables are in `Tables.pdf`.
 
-./readAll Binomial.csv
+## Supported tables
 
-./readAll Chi.csv
+| File | Distribution | Input |
+|---|---|---|
+| `Normal.csv` | standard normal N(0, 1) | z with two decimal places, e.g. 1.22 |
+| `Binomial.csv` | binomial (cumulative) | n ∈ {5, 10, 15, 20, 25}, and x |
+| `Student.csv` | Student's t | probability P and degrees of freedom v (1–30) |
+| `Chi.csv` | chi-squared χ² | probability P and degrees of freedom v (1–30) |
+| `Fisher.csv` | Fisher F | p (0.95 or 0.99), n1 and n2 |
 
-./readAll Fisher.csv
+The program reads the CSV file (`;` as separator), works out the row and column from your input, and prints the value from the table.
 
-./readAll Student.csv
+## How to run
 
-And after starting the program, you have to follow given instruction for each table. It will be written in the console, what you have to enter next.
-
-
-
-In case the compiled file was deleted you should recompile the code using the following command:
+```bash
 cc -o readAll readAll.c
+./readAll Normal.csv
+```
+
+Replace `Normal.csv` with any other table from the list. The program then asks for its parameters in the console.
+
+## Tech stack
+
+C (standard library: `stdio`, `stdlib`, `string`)
